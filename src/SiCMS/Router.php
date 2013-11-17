@@ -2,26 +2,15 @@
 
 namespace SiCMS;
 
+use SiCMS\Core\OmniClass;
+
 /**
  * Class CmsRouter
  *
  * @package SiCMS
  */
-abstract class Router
+abstract class Router extends OmniClass
 {
-
-	/**
-	 * @var
-	 */
-	protected $_app;
-
-	/**
-	 * @param $_app
-	 */
-	function __construct($_app)
-	{
-		$this->_app = $_app;
-	}
 
 	abstract public function load();
 

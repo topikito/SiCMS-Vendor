@@ -2,33 +2,19 @@
 
 namespace SiCMS;
 
-use Silex\Application;
+use SiCMS\Core\OmniClass;
 
 /**
  * Class CmsController
  *
  * @package SiCMS
  */
-class Controller
+class Controller extends OmniClass
 {
-
-	/**
-	 * @var \Silex\Application
-	 */
-	protected   $_app;
-
 	/**
 	 * @var string
 	 */
 	protected   $_typeOfView = 'twig';
-
-	/**
-	 * @param \Silex\Application $app
-	 */
-	public function __construct(Application $app)
-	{
-		$this->_app     = $app;
-	}
 
     /**
      * Checks if the params are not empty for vital usages

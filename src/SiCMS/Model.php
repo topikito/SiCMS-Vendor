@@ -2,32 +2,20 @@
 
 namespace SiCMS;
 
-use Silex\Application;
+use SiCMS\Core\OmniClass;
 
 /**
  * Class CmsModel
  *
  * @package SiCMS
  */
-class Model
+class Model extends OmniClass
 {
 
 	/**
 	 * @var
 	 */
 	protected $_tableName;
-	/**
-	 * @var \Silex\Application
-	 */
-	protected $_app;
-
-	/**
-	 * @param \Silex\Application $app
-	 */
-	public function __construct(Application $app)
-	{
-		$this->_app = $app;
-	}
 
 	/**
 	 * Conditions must be specified in the following structure:
