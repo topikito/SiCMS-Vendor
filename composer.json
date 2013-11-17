@@ -10,7 +10,7 @@
         "psr-0": {
             "sicms": "src"
         }
-    }
+    },
     "license": "MIT",
     "authors": [
         {
