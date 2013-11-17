@@ -23,22 +23,20 @@ abstract class Bootstrap
 	}
 
 	/**
-	 * @param $configFile
+	 * @param $configFile   string
+	 * @param $paths        string|array
 	 *
 	 * @return $this
 	 */
-	public function loadConfig($configFile)
+	public function loadConfig($configFile, $paths)
 	{
-		$paths = [
-			dirname(dirname(__DIR__)) . '/config',
-			dirname(dirname(__DIR__)),
-			__DIR__,
-			dirname(__DIR__)
-		];
+		$paths = (array) $paths;
 
 		$fileLocator = new FileLocator($paths);
-		$configLoader = new ConfigLoader($this->_app);
-		$configLoader->load($fileLocator->locate($configFile));
+
+		$configLoader = $this->getConfigLoader();
+		$configLoader->parseFile($fileLocator->locate($configFile));
+		$configLoader->loadModules();
 
 		return $this;
 	}
@@ -59,12 +57,21 @@ abstract class Bootstrap
 	static public function load($params = [])
 	{
 		$configFile = null;
+		$configPaths = [];
 
 		extract($params);
 
 		$me = new static();
-		$me->loadConfig($configFile)->loadDispatcher();
+		$me->loadConfig($configFile, $configPaths)->loadDispatcher();
 		return $me->getApplication();
+	}
+
+	/**
+	 * @return ConfigLoader
+	 */
+	public function getConfigLoader()
+	{
+		return new \SilexMVC\ConfigLoader($this->_app);
 	}
 
 	abstract function loadDispatcher();

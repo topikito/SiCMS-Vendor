@@ -9,12 +9,9 @@ use SilexMVC\Core\OmniClass;
  *
  * @package SilexMVC
  */
-class Model extends OmniClass
+abstract class Model extends OmniClass
 {
 
-	/**
-	 * @var
-	 */
 	protected $_tableName;
 
 	/**

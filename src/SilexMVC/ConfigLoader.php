@@ -2,6 +2,7 @@
 
 namespace SilexMVC;
 
+use SilexMVC\Core\OmniClass;
 use Symfony\Component\Yaml\Yaml;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
@@ -12,8 +13,10 @@ use Silex\Provider\DoctrineServiceProvider;
  *
  * @package SilexMVC
  */
-class ConfigLoader
+class ConfigLoader extends OmniClass
 {
+
+	protected $_baseDir;
 
 	/**
 	 * @return $this
@@ -69,8 +72,9 @@ class ConfigLoader
 		{
 			$viewsFolder = $this->_app['config']['cms']['views']['rootFolder'];
 		}
+
 		$this->_app->register(new TwigServiceProvider(), [
-			'twig.path' => __DIR__ . '/../..' . $viewsFolder
+			'twig.path' => $this->_baseDir . $viewsFolder
 		]);
 
 		return $this;
@@ -106,7 +110,7 @@ class ConfigLoader
 	 *
 	 * @return array
 	 */
-	public function load($resource)
+	public function parseFile($resource)
 	{
 		$configValues = Yaml::parse($resource);
 
@@ -117,12 +121,24 @@ class ConfigLoader
 		$config = $this->_mergeConfigs($common,$env);
 		$this->_app['config'] = $config;
 
+		return $config;
+	}
+
+	public function loadModules()
+	{
+		$this->_baseDir = $this->getBaseDir();
+
 		$this->_loadViews();
 		$this->_loadTranslator();
 		$this->_loadDB();
 		$this->_loadDebug();
 
-		return $config;
+		return $this;
+	}
+
+	public function getBaseDir()
+	{
+		return dirname(__DIR__);
 	}
 
 }

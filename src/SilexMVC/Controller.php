@@ -9,30 +9,30 @@ use SilexMVC\Core\OmniClass;
  *
  * @package SilexMVC
  */
-class Controller extends OmniClass
+abstract class Controller extends OmniClass
 {
 	/**
 	 * @var string
 	 */
 	protected   $_typeOfView = 'twig';
 
-    /**
-     * Checks if the params are not empty for vital usages
-     *
-     * @return bool
-     */
-    protected function _checkVitalParams()
-    {
-        $params = func_get_args();
-        foreach ($params as $param)
-        {
-            if (empty($param))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+	/**
+	 * Checks if the params are not empty for vital usages
+	 *
+	 * @return bool
+	 */
+	protected function _checkVitalParams()
+	{
+		$params = func_get_args();
+		foreach ($params as $param)
+		{
+			if (empty($param))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * @param null $templateName
@@ -41,22 +41,22 @@ class Controller extends OmniClass
 	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	protected function _render($templateName = null, $args = null)
-    {
-	    $response = null;
-        switch ($this->_typeOfView)
-        {
-            case 'json':
-                $response = $this->_app->json($args);
-                break;
+	{
+		$response = null;
+		switch ($this->_typeOfView)
+		{
+			case 'json':
+				$response = $this->_app->json($args);
+				break;
 
-            case 'twig':
-            default:
-                $response = $this->_app['twig']->render($templateName, $args);
-                break;
-        }
+			case 'twig':
+			default:
+				$response = $this->_app['twig']->render($templateName, $args);
+				break;
+		}
 
-	    return $response;
-    }
+		return $response;
+	}
 
 	/**
 	 * @param     $message
@@ -65,19 +65,19 @@ class Controller extends OmniClass
 	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
 	protected function _renderError($message, $errorCode = 500)
-    {
-        switch ($this->_typeOfView)
-        {
-            case 'json':
-                return $this->_app->json($message, $errorCode);
-                break;
+	{
+		switch ($this->_typeOfView)
+		{
+			case 'json':
+				return $this->_app->json($message, $errorCode);
+				break;
 
-            case 'twig':
-            default:
-                //Is this really necessary?
-                break;
-        }
-    }
+			case 'twig':
+			default:
+				//Is this really necessary?
+				break;
+		}
+	}
 
 	/**
 	 * @param $type
@@ -85,9 +85,9 @@ class Controller extends OmniClass
 	 * @return bool
 	 */
 	public function setTypeOfView($type)
-    {
-        $this->_typeOfView = $type;
-        return true;
-    }
+	{
+		$this->_typeOfView = $type;
+		return true;
+	}
 
 }
