@@ -8,7 +8,7 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"sicms": "src"
+			"SilexMVC": "src"
 		}
 	},
 	"license": "MIT",
