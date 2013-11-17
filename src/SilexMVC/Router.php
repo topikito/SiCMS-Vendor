@@ -1,13 +1,13 @@
 <?php
 
-namespace SiCMS;
+namespace SilexMVC;
 
-use SiCMS\Core\OmniClass;
+use SilexMVC\Core\OmniClass;
 
 /**
  * Class CmsRouter
  *
- * @package SiCMS
+ * @package SilexMVC
  */
 abstract class Router extends OmniClass
 {

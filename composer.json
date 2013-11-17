@@ -1,22 +1,22 @@
 {
-    "name": "topikito/sicms",
-    "description": "Silex in a cms way",
-    "require": {
-	"php": ">=5.4.0",
-        "silex/silex": "1.*",
-        "symfony/symfony": "2.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "sicms": "src"
-        }
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Roberto",
-            "email": "topikito@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev"
+	"name": "topikito/silex-mvc",
+	"description": "Silex in a MVC way",
+	"require": {
+		"php": ">=5.4.0",
+		"silex/silex": "1.*",
+		"symfony/symfony": "2.*"
+	},
+	"autoload": {
+		"psr-0": {
+			"sicms": "src"
+		}
+	},
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Roberto",
+			"email": "topikito@gmail.com"
+		}
+	],
+	"minimum-stability": "dev"
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace SiCMS;
+namespace SilexMVC;
 
-use SiCMS\Core\OmniClass;
+use SilexMVC\Core\OmniClass;
 
 /**
  * Class CmsModel
  *
- * @package SiCMS
+ * @package SilexMVC
  */
 class Model extends OmniClass
 {

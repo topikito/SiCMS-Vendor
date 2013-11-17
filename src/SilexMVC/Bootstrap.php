@@ -1,6 +1,6 @@
 <?php
 
-namespace SiCMS;
+namespace SilexMVC;
 
 use Silex\Application;
 use Symfony\Component\Config\FileLocator;

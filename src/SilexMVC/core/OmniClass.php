@@ -1,6 +1,6 @@
 <?php
 
-namespace SiCMS\Core;
+namespace SilexMVC\Core;
 
 use Silex\Application;
 
@@ -10,7 +10,7 @@ use Silex\Application;
  *
  * Class OmniClass
  *
- * @package SiCMS\Core
+ * @package SilexMVC\Core
  */
 class OmniClass
 {

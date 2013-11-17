@@ -1,6 +1,6 @@
 <?php
 
-namespace SiCMS;
+namespace SilexMVC;
 
 use Symfony\Component\Yaml\Yaml;
 use Silex\Provider\TwigServiceProvider;
@@ -10,7 +10,7 @@ use Silex\Provider\DoctrineServiceProvider;
 /**
  * Class CmsConfig
  *
- * @package SiCMS
+ * @package SilexMVC
  */
 class ConfigLoader
 {
