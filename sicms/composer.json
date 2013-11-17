@@ -6,6 +6,11 @@
         "silex/silex": "1.*",
         "symfony/symfony": "2.*"
     },
+    "autoload": {
+        "psr-0": {
+            "sicms": "src"
+        }
+    }
     "license": "MIT",
     "authors": [
         {
