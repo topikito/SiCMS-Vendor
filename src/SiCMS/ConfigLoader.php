@@ -3,6 +3,7 @@
 namespace SiCMS;
 
 use Symfony\Component\Yaml\Yaml;
+use Silex\Application;
 use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -23,7 +24,7 @@ class ConfigLoader
 	/**
 	 * @param \Silex\Application $_app
 	 */
-	function __construct(\Silex\Application $_app)
+	function __construct(Application $_app)
 	{
 		$this->_app = $_app;
 	}

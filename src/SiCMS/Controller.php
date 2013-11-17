@@ -2,6 +2,8 @@
 
 namespace SiCMS;
 
+use Silex\Application;
+
 /**
  * Class CmsController
  *
@@ -23,7 +25,7 @@ class Controller
 	/**
 	 * @param \Silex\Application $app
 	 */
-	public function __construct(\Silex\Application $app)
+	public function __construct(Application $app)
 	{
 		$this->_app     = $app;
 	}

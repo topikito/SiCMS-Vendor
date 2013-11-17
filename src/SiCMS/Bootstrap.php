@@ -2,12 +2,13 @@
 
 namespace SiCMS;
 
+use Silex\Application;
 use Symfony\Component\Config\FileLocator;
 
 /**
  * Class Bootstrap
  */
-class Bootstrap
+abstract class Bootstrap
 {
 
 	/**
@@ -18,7 +19,7 @@ class Bootstrap
 	private function __construct()
 	{
 		// Let the magic BEGIN!!
-		$this->_app = new \Silex\Application();
+		$this->_app = new Application();
 	}
 
 	/**
@@ -36,19 +37,8 @@ class Bootstrap
 		];
 
 		$fileLocator = new FileLocator($paths);
-		$configLoader = new CmsConfigLoader($this->_app);
+		$configLoader = new ConfigLoader($this->_app);
 		$configLoader->load($fileLocator->locate($configFile));
-
-		return $this;
-	}
-
-	/**
-	 * @return $this
-	 */
-	private function loadDispatcher()
-	{
-		$router = new CmsRouter($this->_app);
-		$router->load();
 
 		return $this;
 	}
@@ -76,5 +66,7 @@ class Bootstrap
 		$me->loadConfig($configFile)->loadDispatcher();
 		return $me->getApplication();
 	}
+
+	abstract function loadDispatcher();
 
 }
