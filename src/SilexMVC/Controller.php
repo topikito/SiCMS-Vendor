@@ -36,11 +36,11 @@ abstract class Controller extends OmniClass
 
 	/**
 	 * @param null $templateName
-	 * @param null $args
+	 * @param array $args
 	 *
 	 * @return \Symfony\Component\HttpFoundation\JsonResponse
 	 */
-	protected function _render($templateName = null, $args = null)
+	protected function _render($templateName = null, $args = [])
 	{
 		$response = null;
 		switch ($this->_typeOfView)
