@@ -49,6 +49,9 @@ abstract class Bootstrap
 		return $this->_app;
 	}
 
+	public function before() {}
+	public function customLoad() {}
+
 	/**
 	 * @param array $params
 	 *
@@ -62,7 +65,11 @@ abstract class Bootstrap
 		extract($params);
 
 		$me = new static();
-		$me->loadConfig($configFile, $configPaths)->loadDispatcher();
+		$me->loadConfig($configFile, $configPaths);
+		$me->loadDispatcher();
+		$me->customLoad();
+		$me->before();
+
 		return $me->getApplication();
 	}
 
