@@ -50,6 +50,8 @@ abstract class Bootstrap
 	}
 
 	public function before() {}
+	public function after() {}
+	public function finish() {}
 	public function customLoad() {}
 
 	/**
@@ -65,10 +67,14 @@ abstract class Bootstrap
 		extract($params);
 
 		$me = new static();
+
 		$me->loadConfig($configFile, $configPaths);
-		$me->loadDispatcher();
-		$me->customLoad();
+
 		$me->before();
+		$me->customLoad();
+		$me->loadDispatcher();
+		$me->after();
+		$me->finish();
 
 		return $me->getApplication();
 	}
